@@ -1,3 +1,5 @@
+![rift](.github/preview.png)
+
 # Rift
 
 **Cross-engine game asset pipeline manager.**

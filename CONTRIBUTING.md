@@ -23,7 +23,7 @@ This project is committed to fostering a welcoming and inclusive environment. Be
 
 ```bash
 # Clone the repo
-git clone https://github.com/synthalorian/rift.git
+git clone https://github.com/Blackshield-Company/rift.git
 cd rift
 
 # Build the Rust CLI
@@ -74,7 +74,7 @@ rift/
 
 ### 1. Pick an Issue
 
-Check the [issues page](https://github.com/synthalorian/rift/issues) for open tasks. Comment to let others know you're working on it.
+Check the [issues page](https://github.com/Blackshield-Company/rift/issues) for open tasks. Comment to let others know you're working on it.
 
 ### 2. Create a Branch
 
@@ -180,8 +180,8 @@ Maintainers handle releases:
 
 ## Getting Help
 
-- Open a [discussion](https://github.com/synthalorian/rift/discussions) for questions
-- File an [issue](https://github.com/synthalorian/rift/issues) for bugs or feature requests
+- Open a [discussion](https://github.com/Blackshield-Company/rift/discussions) for questions
+- File an [issue](https://github.com/Blackshield-Company/rift/issues) for bugs or feature requests
 - Check existing issues before opening a new one
 
 ---

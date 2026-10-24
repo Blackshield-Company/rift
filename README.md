@@ -4,7 +4,7 @@
 
 **Cross-engine game asset pipeline manager.**
 
-[![CI](https://github.com/synthalorian/rift/actions/workflows/ci.yml/badge.svg)](https://github.com/synthalorian/rift/actions/workflows/ci.yml)
+[![CI](https://github.com/Blackshield-Company/rift/actions/workflows/ci.yml/badge.svg)](https://github.com/Blackshield-Company/rift/actions/workflows/ci.yml)
 
 Drop raw assets in one directory. Rift converts textures, validates models, compresses audio, and deploys to Unity, Godot, and Unreal — all from a single YAML config.
 
@@ -28,7 +28,7 @@ Drop raw assets in one directory. Rift converts textures, validates models, comp
 
 ```bash
 # Install
-git clone https://github.com/synthalorian/rift.git
+git clone https://github.com/Blackshield-Company/rift.git
 cd rift && cargo install --path .
 
 # Initialize a pipeline

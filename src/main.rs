@@ -381,7 +381,7 @@ async fn cmd_upgrade() -> StdResult<(), Box<dyn std::error::Error>> {
         .timeout(std::time::Duration::from_secs(10))
         .build()?;
 
-    let url = "https://api.github.com/repos/synthalorian/rift/releases/latest";
+    let url = "https://api.github.com/repos/Blackshield-Company/rift/releases/latest";
     let resp = client.get(url).send().await?;
 
     if !resp.status().is_success() {
@@ -410,11 +410,11 @@ async fn cmd_upgrade() -> StdResult<(), Box<dyn std::error::Error>> {
         println!("\n{}  Update available!", "📦".bright_cyan().bold());
         println!(
             "   Run: {}",
-            "cargo install --git https://github.com/synthalorian/rift.git".bright_white()
+            "cargo install --git https://github.com/Blackshield-Company/rift.git".bright_white()
         );
         println!(
             "   Or download from: {}",
-            "https://github.com/synthalorian/rift/releases".bright_cyan()
+            "https://github.com/Blackshield-Company/rift/releases".bright_cyan()
         );
     }
 

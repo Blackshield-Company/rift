@@ -70,15 +70,16 @@ pub fn convert(source: &Path, target: &TargetConfig) -> crate::Result<PathBuf> {
     Ok(output_path)
 }
 
-/// Fit dimensions within max bounds, maintaining aspect ratio
+/// Fit dimensions within max bounds, maintaining aspect ratio.
+/// Both results stay within their bound and neither side is shrunk more than needed.
 fn fit_within(w: u32, h: u32, max_w: u32, max_h: u32) -> (u32, u32) {
     if w <= max_w && h <= max_h {
         return (w, h);
     }
-    let ratio = (w as f64 / h as f64).min((max_w as f64 / max_h as f64).max(1.0));
-    let new_w = (max_w as f64).min(w as f64 * ratio);
-    let new_h = new_w / ratio;
-    (new_w.max(1.0) as u32, new_h.max(1.0) as u32)
+    let scale = (max_w as f64 / w as f64).min(max_h as f64 / h as f64);
+    let new_w = ((w as f64 * scale).round() as u32).clamp(1, max_w.max(1));
+    let new_h = ((h as f64 * scale).round() as u32).clamp(1, max_h.max(1));
+    (new_w, new_h)
 }
 
 #[cfg(test)]
@@ -96,6 +97,20 @@ mod tests {
         assert!(w <= 2048);
         assert!(h <= 2048);
         assert!(w >= h); // wider than tall, ratio preserved roughly
+    }
+
+    #[test]
+    fn test_fit_within_respects_both_bounds() {
+        // Wide image into a short box: height used to come out at 682 (> 512).
+        assert_eq!(fit_within(3000, 1000, 2048, 512), (1536, 512));
+        // Tall image into a square box: used to shrink to 250x1000 instead of 512x2048.
+        assert_eq!(fit_within(1000, 4000, 2048, 2048), (512, 2048));
+        // Wide image into a tall box.
+        assert_eq!(fit_within(4096, 1024, 1024, 4096), (1024, 256));
+        // Only one side over the bound.
+        assert_eq!(fit_within(2049, 100, 2048, 2048), (2048, 100));
+        // Extreme aspect ratio never yields a zero side.
+        assert_eq!(fit_within(100_000, 1, 1024, 1024), (1024, 1));
     }
 
     #[test]
